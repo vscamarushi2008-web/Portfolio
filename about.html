@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+  background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=20&w=1200");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: -1;
+}
+
+/* NAV */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 16px 20px;
+  position: relative;
+}
+
+.nav h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 0.95rem;
+  padding: 6px 2px;
+}
+
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  justify-self: end;
+  user-select: none;
+  padding: 4px 8px;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 0 16px 40px;
+}
+
+.box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  width: 700px;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.about-images {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.about-images img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.img-tech {
+  filter: grayscale(30%) brightness(90%);
+  opacity: 0.9;
+}
+
+.about-images img:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  filter: none;
+  opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    left: 16px;
+    padding: 10px 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: left;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  .box {
+    padding: 20px 16px;
+  }
+
+  .box h2 {
+    font-size: 1.3rem;
+  }
+
+  .box h3 {
+    font-size: 1.1rem;
+  }
+
+  .box p {
+    font-size: 0.95rem;
+  }
+
+  .about-images {
+    gap: 20px;
+  }
+
+  .about-images img {
+    width: 110px;
+    height: 110px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <h3>Vijayasri Camarushi</h3>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home 🏠</a>
+    <a href="about.html">About 👤</a>
+    <a href="portfolio.html">Portfolio 💼</a>
+    <a href="contact.html">Contact 📞</a>
+  </div>
+
+  <div class="menu-icon" onclick="toggleMenu()" id="menuIcon">☰</div>
+</div>
+
+<div class="container">
+  <div class="box">
+
+    <h2>About Me 👤</h2>
+
+    <div class="about-images">
+      <img src="mine1.png" alt="Profile" class="img-main">
+      <img src="ai.png" alt="AI" class="img-tech">
+      <img src="cv.png" alt="COMPUTER VISION" class="img-tech">
+    </div>
+
+    <p>I am Vijayasri Camarushi, a CSE undergraduate at IIIT Sri City.</p>
+    <p>Research Intern at HCI Lab working on Computer Vision & ISL.</p>
+    <p>Building a large-scale Indian Sign Language dataset.</p>
+
+    <h3>My Journey 🚀</h3>
+
+    <p>🎓 IIIT Sri City – B.Tech CSE</p>
+    <p>🔬 Research Intern – HCI Lab</p>
+    <p>📄 Research Paper Contribution (Acknowledged)</p>
+    <p>🤟 Working on ISL Dataset (Computer Vision)</p>
+
+    <h3>Skills ⚡</h3>
+
+    <p>C Programming</p>
+    <p>Java(Learning)</p>
+    <p>Python(Learning)</p>
+    <p>Computer Vision(Learning)</p>
+
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  var links = document.getElementById('navLinks');
+  var icon = document.getElementById('menuIcon');
+  links.classList.toggle('show');
+  icon.textContent = links.classList.contains('show') ? '✕' : '☰';
+}
+
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('.nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('show');
+    document.getElementById('menuIcon').textContent = '☰';
+  }
+});
+</script>
+
+</body>
+</html>

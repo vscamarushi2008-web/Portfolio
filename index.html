@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+  background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=20&w=1200");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: -1;
+}
+
+/* NAV */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 16px 20px;
+  position: relative;
+}
+
+.nav h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 0.95rem;
+  padding: 6px 2px;
+}
+
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  justify-self: end;
+  user-select: none;
+  padding: 4px 8px;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  padding: 0 16px;
+}
+
+.box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 700px;
+  max-width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-container img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.images img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    left: 16px;
+    padding: 10px 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: left;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  .container {
+    margin-top: 40px;
+  }
+
+  .box {
+    padding: 24px 18px;
+  }
+
+  .box h2 {
+    font-size: 1.3rem;
+  }
+
+  .box p {
+    font-size: 0.95rem;
+  }
+
+  .profile-container img {
+    width: 110px;
+    height: 110px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <h3>Vijayasri Camarushi</h3>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home 🏠</a>
+    <a href="about.html">About 👤</a>
+    <a href="portfolio.html">Portfolio 💼</a>
+    <a href="contact.html">Contact 📞</a>
+  </div>
+
+  <div class="menu-icon" onclick="toggleMenu()" id="menuIcon">☰</div>
+</div>
+
+<div class="container">
+  <div class="box">
+
+    <div class="profile-container">
+      <img src="mine1.png" alt="Profile Photo">
+    </div>
+
+    <h2>Vijayasri Camarushi</h2>
+
+    <p>Computer Vision | ISL Research | HCI Lab Intern @ IIIT Sri City 🚀</p>
+    <p>Building India's largest Indian Sign Language dataset 🌍</p>
+
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  var links = document.getElementById('navLinks');
+  var icon = document.getElementById('menuIcon');
+  links.classList.toggle('show');
+  icon.textContent = links.classList.contains('show') ? '✕' : '☰';
+}
+
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('.nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('show');
+    document.getElementById('menuIcon').textContent = '☰';
+  }
+});
+</script>
+
+</body>
+</html>
