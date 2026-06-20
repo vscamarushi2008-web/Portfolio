@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — "HCI Lab" theme
+   Cyan/electric-blue research-lab palette on near-black void.
+   ============================================================ */
+@theme {
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-void: #05080f;
+  --color-panel: #0a0e1a;
+  --color-panel-2: #0d1326;
+  --color-line: #1b2740;
+  --color-signal: #00d9ff;
+  --color-signal-dim: #0891b2;
+  --color-blue: #3b82f6;
+  --color-highlight: #7df9ff;
+  --color-ink: #e8f4ff;
+  --color-ink-dim: #93a4c3;
+  --color-ink-faint: #5b6b8c;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-void);
+  }
+
+  /* Thin lab-instrument scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-signal-dim);
+  }
+
+  /* Visible keyboard focus everywhere */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Glassmorphism panel base */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 19, 38, 0.55),
+      rgba(10, 14, 26, 0.65)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(0, 217, 255, 0.12);
+  }
+
+  .glass-strong {
+    background: rgba(10, 14, 26, 0.78);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 217, 255, 0.18);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+  }
+
+  .grid-fade-mask {
+    mask-image: radial-gradient(
+      ellipse 60% 50% at 50% 30%,
+      black 40%,
+      transparent 100%
+    );
+  }
+
+  .signal-border {
+    border: 1px solid rgba(0, 217, 255, 0.25);
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
