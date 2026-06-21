@@ -17,7 +17,8 @@ export default function NeuralNetworkScene({ mouse }) {
       camera={{ position: [0, 0, 6.2], fov: 50 }}
       frameloop={frameloop.current}
       gl={{ antialias: true, alpha: true }}
-      className="!absolute !inset-0"
+      events={() => ({ enabled: false, priority: 0 })}
+      className="!absolute !inset-0 !pointer-events-none"
     >
       <ambientLight intensity={0.4} />
       <pointLight position={[3, 3, 3]} intensity={1.2} color="#00d9ff" />
