@@ -31,7 +31,11 @@ export default function Navbar() {
     // distort the scroll. Calculate the target first, kick off the scroll,
     // THEN close the menu on the next frame so the collapse animation
     // doesn't fight the scroll.
-    window.scrollTo({ top: targetY, behavior: "smooth" });
+    const isMobile = window.innerWidth < 768;
+    window.scrollTo({
+      top: targetY,
+      behavior: isMobile ? "auto" : "smooth",
+    });
     requestAnimationFrame(() => setOpen(false));
   }
 
