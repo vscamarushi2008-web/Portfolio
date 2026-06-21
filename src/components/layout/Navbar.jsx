@@ -20,10 +20,17 @@ export default function Navbar() {
       return;
     }
 
+    // Offset the scroll target by the navbar's height so the section
+    // heading doesn't land hidden underneath the fixed header.
     const navOffset = 72;
     const targetY =
       el.getBoundingClientRect().top + window.scrollY - navOffset;
 
+    // On mobile, closing the menu immediately (height: auto -> 0) changes
+    // page layout in the same tick as scrollIntoView, which can cancel or
+    // distort the scroll. Calculate the target first, kick off the scroll,
+    // THEN close the menu on the next frame so the collapse animation
+    // doesn't fight the scroll.
     window.scrollTo({ top: targetY, behavior: "smooth" });
     requestAnimationFrame(() => setOpen(false));
   }
