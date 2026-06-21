@@ -31,6 +31,10 @@ export default function Navbar() {
     // distort the scroll. Calculate the target first, kick off the scroll,
     // THEN close the menu on the next frame so the collapse animation
     // doesn't fight the scroll.
+    //
+    // Smooth scroll also competes with the WebGL canvas repainting every
+    // frame for the main thread on lower-powered mobile devices, which
+    // can read as the page "freezing" — so mobile gets an instant jump.
     const isMobile = window.innerWidth < 768;
     window.scrollTo({
       top: targetY,
